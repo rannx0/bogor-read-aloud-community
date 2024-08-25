@@ -1,6 +1,3 @@
-Berikut adalah kode untuk file `README.md`:
-
-```markdown
 # Bogor Read Aloud Community Website
 
 Welcome to the official repository for the **Bogor Read Aloud Community** website. This platform is dedicated to promoting literacy and fostering a love for reading in the community through engaging activities and events.
