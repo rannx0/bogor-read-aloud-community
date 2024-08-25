@@ -61,5 +61,3 @@ We welcome contributions from the community! If you would like to contribute to 
 
 This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
 ```
-
-You can copy and paste this code directly into your `README.md` file on GitHub.
