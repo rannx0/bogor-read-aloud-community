@@ -19,6 +19,6 @@
         @endforeach
     </p>
 
-    <p><strong>Description:</strong> {{ $blog->description }}</p>
+    <p><strong>Description:</strong> {!! $blog->description !!}</p>
 </div>
 @endsection

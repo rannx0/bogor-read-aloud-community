@@ -13,6 +13,6 @@
     <script src="{{ asset('back-style/js/pages/demo.dashboard-analytics.js')}}"></script>
     <!-- end demo js-->
     <!-- plugin js -->
-    <script src="assets/js/vendor/dropzone.min.js"></script>
+    <script src="{{ asset('back-style/js/vendor/dropzone.min.js')}}"></script>
     <!-- init js -->
-    <script src="assets/js/ui/component.fileupload.js"></script>
+    <script src="{{ asset('back-style/js/ui/component.fileupload.js')}}"></script>

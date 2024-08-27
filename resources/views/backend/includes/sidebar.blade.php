@@ -1,7 +1,7 @@
 <div class="leftside-menu">
 
 <!-- LOGO -->
-<a href="index.html" class="d-flex align-items-center justify-content-center text-decoration-none">
+<a href="index.html" class="d-fle justify-content-center">
     <img src="{{asset ('img/logo.png')}}" alt="Logo" height="40" class="me-2">
     <span class="h4 mb-0 mt-1" style="font-family: 'Arial', sans-serif; font-weight: bold; color: #ffffff;">BoRa</span>
 </a>
@@ -63,7 +63,7 @@
                 <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
                     class="side-nav-link">
                     <i class="uil uil-tachometer-fast"></i>
-                    <span> CRM </span>
+                    <span> Article </span>
                 </a>
                 <div class="collapse" id="sidebarCrm">
                     <ul class="side-nav-second-level">

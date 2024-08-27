@@ -15,3 +15,6 @@
 <link href="{{ asset('back-style/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+
+<!-- Quill css -->
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
