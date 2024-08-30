@@ -138,12 +138,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.event-card:hover {
-  background-color: #57aac4;
-  border-color: #57aac4;
-  box-shadow: 0 4px 6px rgba(87, 170, 196, 0.5);
-  color: #fff;
-}
 
 .event-card:hover .card-title a,
 .event-card:hover .card-text,
@@ -152,3 +146,4 @@
   color: #fff;
   border-color: #fff;
 }
+

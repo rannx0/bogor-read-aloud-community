@@ -26,6 +26,7 @@ use App\Http\Controllers\BlogCategoryController;
 // Public Routes (Frontend)
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 Route::get('/events/{judul}', [EventController::class, 'showDetail'])->name('detail.events');
+Route::get('/article/{title}', [BlogController::class, 'showDetail'])->name('detail.blogs');
 
 // Authentication Routes
 Auth::routes();

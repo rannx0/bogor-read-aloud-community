@@ -15,6 +15,13 @@ class BlogController extends Controller
         return view('backend.article.index', compact('blogs'));
     }
 
+    public function showDetail($title)
+    {
+        $title = urldecode($title); // Jika perlu mendecode URL
+        $blog = BlogPost::where('title', $title)->firstOrFail();
+        return view('frontend.article.show', compact('blog'));
+    }
+
     public function create()
     {
         $categories = BlogCategory::all();

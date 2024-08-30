@@ -96,62 +96,49 @@
   <!-- End AboutUs -->
 
   <!-- Event -->
-  <div class="container content-space-2 content-space-lg-3">
-    <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
+  <div class="container content-space-2">
+    <!-- Heading -->
+    <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
       <h2 class="text-dark">EVENT</h2>
     </div>
-    <div class="row">
-      @foreach ($events as $event)
-      <div class="col-sm-5 col-lg-4 mb-2" data-aos="fade-right" data-aos-delay="100">
+    <!-- End Heading -->
+
+    <!-- Swiper Container -->
+    <div class="js-swiper-card-grid swiper">
+      <div class="swiper-wrapper m-3">
+        @foreach ($events as $event)
         <!-- Card -->
-        <div class="card h-100 event-card card-transition">
-          <div class="shape-container">
-            <img class="card-img-top square-img" src="{{ Storage::url($event->thumbnail) }}" alt="{{ $event->judul }}">
-            <!-- Shape -->
-            <div class="shape shape-bottom zi-1" style="margin-bottom: -.25rem">
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
-                <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
-              </svg>
+        <div class="swiper-slide w-25">
+          <a class="card card-transition shadow-lg h-100" href="{{ route('detail.events', $event->judul) }}">
+            <div class="d-flex justify-content-center mt-3">
+              <img class="card-img w-85 rounded-1" src="{{ Storage::url($event->thumbnail) }}"
+                alt="{{ $event->judul }}">
             </div>
-            <!-- End Shape -->
-          </div>
-          <!-- Card Body -->
-          <div class="card-body">
-            <h4 class="text-inherit">
-              {{ $event->judul }}
-            </h4>
-            <ul class="list-unstyled list-py-1 text-start">
-              <li><strong>Tema:</strong> {{ $event->tema }}</li> 
-              <li><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($event->tanggal_dilaksanakan)->format('d M Y') }}</li> 
-              <li><strong>Lokasi:</strong> {{ $event->lokasi }}</li> 
-              <li><strong>HTM:</strong> Rp {{ number_format($event->harga_tiket_masuk, 0, ',', '.') }}</li>
-              <li><strong>Kuota:</strong> {{ $event->kuota }}</li> 
-            </ul>
-          </div>
-          <!-- End Card Body -->
-          <!-- Card Footer -->
-          <div class="card-title mx-3 mb-2">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="card-text">
-                <p class="mb-1">
-                  <strong>Akhir Pendaftaran</strong>
-                </p>
-                <p class="mb-0">{{ \Carbon\Carbon::parse($event->tanggal_akhir_pendaftaran)->format('d M Y') }}</p>
-              </div>
-              <a class="link" href="{{ route('detail.events', $event->judul) }}">
-                Selengkapnya <i class="bi bi-chevron-right small"></i>
-              </a>
+            <div class="card-body text-start">
+              <span class="badge bg-primary rounded-pill mb-2">{{ $event->tema }}</span>
+              <h3 class="card-title text-inherit">{{ $event->judul }}</h3>
+              <h6 class="d-block text-body mb-3">
+                <i class="bi bi-calendar-event"></i> {{ \Carbon\Carbon::parse($event->tanggal_dilaksanakan)->format('d M Y') }}<br>
+                <i class="bi bi-geo-alt"></i> {{ $event->lokasi }}<br>
+                <i class="bi bi-cash"></i> Rp {{ number_format($event->harga_tiket_masuk, 0, ',', '.') }}<br>
+                <i class="bi bi-people-fill"></i> {{ $event->kuota }}
+              </h6>
             </div>
-          </div>
-          <!-- End Card Footer -->
+          </a>
         </div>
         <!-- End Card -->
+        @endforeach
       </div>
-      @endforeach
+
+      <!-- Swiper Pagination -->
+      <div class="js-swiper-card-grid-pagination swiper-pagination swiper-pagination-dark"></div>
+
     </div>
-    <!-- End Row -->
+    <!-- End Swiper Container -->
   </div>
   <!-- End Event -->
+
+
 
 
   <!-- Gallery-->
@@ -222,120 +209,34 @@
   </div>
   <!-- End Team -->
 
-  <!-- Card Grid -->
+  <!-- Blog -->
   <div class="container content-space-2">
     <!-- Heading -->
     <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
       <h2>Article</h2>
     </div>
     <!-- End Heading -->
-
     <div class="js-swiper-card-grid swiper">
-      <div class="swiper-wrapper">
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img33.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Read the blog</span>
-              <h4 class="card-title text-inherit">Have a meaningful impact</h4>
-              <p class="card-text text-body">Opportunities to Front who have proven to be good at executing on them.</p>
+      <div class="swiper-wrapper m-1">
+        @foreach($blogs as $blog)
+        <!-- Card -->
+        <div class="swiper-slide w-25">
+          <a class="card card-transition shadow-sm h-100" href="{{ route('detail.blogs', $blog->title) }}">
+            <div class="d-flex justify-content-center mt-3">
+              <img class="card-img w-85 rounded-1" src="{{ Storage::url($blog->cover_image) }}"
+                alt="{{ $blog->title }}">
             </div>
-          </div>
-        </div>
-        <!-- End Slide 1 -->
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img34.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Read the blog</span>
-              <h4 class="card-title text-inherit">Documentation</h4>
-              <p class="card-text text-body">Whether you're a startup or a global enterprise, learn how to integrate
-                with Front.</p>
+            <div class="card-body text-start">
+              <span class="badge bg-primary rounded-pill mb-2">{{ $blog->category->name }}</span>
+              <h3 class="card-title text-inherit">{{ $blog->title }}</h3>
+              <h6 class="d-block text-body mb-1">{{ Str::limit($blog->overview, 100) }}</h6>
             </div>
-          </div>
+          </a>
         </div>
-        <!-- End Slide 2 -->
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img35.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Learn about other solutions</span>
-              <h4 class="card-title text-inherit">Explore the Snippets tool</h4>
-              <p class="card-text text-body">Quickly Front sample components, copy-paste codes.</p>
-            </div>
-          </div>
-        </div>
-        <!-- End Slide 3 -->
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img35.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Learn about other solutions</span>
-              <h4 class="card-title text-inherit">Explore the Snippets tool</h4>
-              <p class="card-text text-body">Quickly Front sample components, copy-paste codes.</p>
-            </div>
-          </div>
-        </div>
-        <!-- End Slide 3 -->
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img35.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Learn about other solutions</span>
-              <h4 class="card-title text-inherit">Explore the Snippets tool</h4>
-              <p class="card-text text-body">Quickly Front sample components, copy-paste codes.</p>
-            </div>
-          </div>
-        </div>
-        <!-- End Slide 3 -->
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img35.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Learn about other solutions</span>
-              <h4 class="card-title text-inherit">Explore the Snippets tool</h4>
-              <p class="card-text text-body">Quickly Front sample components, copy-paste codes.</p>
-            </div>
-          </div>
-        </div>
-        <!-- End Slide 3 -->
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="card card-flush h-100">
-            <img class="card-img" src="assets/img/480x320/img35.jpg" alt="Image Description">
-            <div class="card-body">
-              <span class="card-subtitle text-body">Learn about other solutions</span>
-              <h4 class="card-title text-inherit">Explore the Snippets tool</h4>
-              <p class="card-text text-body">Quickly Front sample components, copy-paste codes.</p>
-            </div>
-          </div>
-        </div>
-        <!-- End Slide 3 -->
-
-        <!-- Additional Slides (Duplicate and modify for more articles) -->
+        <!-- End Card -->
+        @endforeach
       </div>
-      <!-- Card Info -->
-      <div class="text-center">
-        <div class="card card-info-link card-sm">
-          <div class="card-body">
-            Want to read more? <a class="card-link ms-2" href="#">Go here <span
-                class="bi-chevron-right small ms-1"></span></a>
-          </div>
-        </div>
-      </div>
-      <!-- End Card Info -->
+
       <!-- Swiper Pagination -->
       <div class="js-swiper-card-grid-pagination swiper-pagination swiper-pagination-dark"></div>
 
@@ -343,23 +244,23 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
-
   </div>
-  <!-- End Card Grid -->
+  <!-- End Blog -->
+
 
   {{-- Maps --}}
   <section class="container content-space-2 text-center ">
 
 
     <h2 class="mb-5 text-start">Contact us</h2>
-  
+
     <div class="row">
       <div class="col-lg-5">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12094.57348593182!2d-74.00599512526003!3d40.72586666928451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2598f988156a9%3A0xd54629bdf9d61d68!2sBroadway-Lafayette%20St!5e0!3m2!1spl!2spl!4v1624523797308!5m2!1spl!2spl"
           class="h-100 w-100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
-  
+
       <div class="col-lg-7">
         <form>
           <div class="row">
@@ -381,11 +282,11 @@
             </div>
           </div>
         </form>
-  
+
       </div>
     </div>
-  
-  
+
+
   </section>
 
   <!-- ========== END MAIN CONTENT ========== -->

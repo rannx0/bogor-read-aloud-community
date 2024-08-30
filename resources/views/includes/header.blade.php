@@ -7,7 +7,7 @@
 
   <div class="container">
       <!-- Default Logo -->
-      <a class="navbar-brand" href="index.html" aria-label="Front">
+      <a class="navbar-brand" href="#" aria-label="Front">
         <img class="navbar-brand-logo h-25" src="img/logo2.png" alt="Logo">
         <span class="navbar-brand-name text-dark">Bogor Read Aloud</span>
       </a>

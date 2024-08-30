@@ -10,6 +10,7 @@ use App\Models\Team;
 use App\Models\Event;
 use App\Models\MediaPartner;
 use App\Models\Sponsor;
+use App\Models\BlogPost;
 
 class FrontendServiceProvider extends ServiceProvider
 {
@@ -39,12 +40,21 @@ class FrontendServiceProvider extends ServiceProvider
         });
 
         // View Composer untuk view 'frontend.events.show'
-        View::composer('pages.events', function ($view) {
+        View::composer('welcome', function ($view) {
             $eventId = request()->route('event');
             $event = Event::with(['mediaPartners', 'sponsors'])->find($eventId);
 
             // Kirimkan data ke view
             $view->with('event', $event);
+        });
+
+        // View Composer untuk view 'frontend.blog'
+        View::composer('welcome', function ($view) {
+            // Ambil semua data blog
+            $blogs = BlogPost::with('category')->latest()->get();
+
+            // Kirimkan data ke view
+            $view->with('blogs', $blogs);
         });
     }
 }
