@@ -11,6 +11,7 @@ use App\Models\Event;
 use App\Models\MediaPartner;
 use App\Models\Sponsor;
 use App\Models\BlogPost;
+use App\Models\Configuration;
 
 class FrontendServiceProvider extends ServiceProvider
 {
@@ -56,5 +57,12 @@ class FrontendServiceProvider extends ServiceProvider
             // Kirimkan data ke view
             $view->with('blogs', $blogs);
         });
+
+        // // View Composer untuk semua view
+        // View::composer('*', function ($view) {
+        //     $configurations = Configuration::first();
+        //     $view->with('config', $configurations);
+        // });
+        
     }
 }

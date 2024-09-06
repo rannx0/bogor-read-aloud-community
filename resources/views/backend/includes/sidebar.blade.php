@@ -23,7 +23,7 @@
 
             
             <li class="side-nav-item">
-                <a href="{{ route('home') }}" class="side-nav-link">
+                <a href="{{ route('configuration.index') }}" class="side-nav-link">
                     <i class="dripicons-gear"></i>
                     <span> Konfigurasi </span>
                 </a>
@@ -60,64 +60,18 @@
             </li>
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
+                <a data-bs-toggle="collapse" href="#article" aria-expanded="false" aria-controls="sidebarCrm"
                     class="side-nav-link">
                     <i class="uil uil-tachometer-fast"></i>
                     <span> Article </span>
                 </a>
-                <div class="collapse" id="sidebarCrm">
+                <div class="collapse" id="article">
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="{{ route('blogs.index')}}">Blog</a>
                         </li>
                         <li>
                             <a href="{{ route('categories.index')}}">Categories</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
-                    class="side-nav-link">
-                    <i class="uil uil-tachometer-fast"></i>
-                    <span> CRM </span>
-                </a>
-                <div class="collapse" id="sidebarCrm">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="crm-dashboard.html">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="crm-projects.html">Project</a>
-                        </li>
-                        <li>
-                            <a href="crm-orders-list.html">Orders List</a>
-                        </li>
-                        <li>
-                            <a href="crm-clients.html">Clients</a>
-                        </li>
-                        <li>
-                            <a href="crm-management.html">Management</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false"
-                    aria-controls="sidebarEcommerce" class="side-nav-link">
-                    <i class="uil-store"></i>
-                    <span> Ecommerce </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarEcommerce">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="apps-ecommerce-products.html">Products</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-products-details.html">Products Details</a>
                         </li>
                     </ul>
                 </div>

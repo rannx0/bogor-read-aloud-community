@@ -12,6 +12,8 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\MediaPartnerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\ConfigurationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,7 +106,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/categories/{category}/edit', [BlogCategoryController::class, 'edit'])->name('categories.edit'); // Menampilkan form edit kategori
     Route::put('/categories/{category}', [BlogCategoryController::class, 'update'])->name('categories.update'); // Menyimpan perubahan kategori
     Route::delete('/blog-categories/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('categories.destroy');    // Menghapus kategori
-
+    
+    // Routes untuk Configurations
+    Route::get('/configuration/{id?}', [ConfigurationController::class, 'index'])->name('configuration.index');
+    Route::post('/configuration', [ConfigurationController::class, 'store'])->name('configuration.store');
+    
 });
-
-
