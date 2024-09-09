@@ -1,86 +1,118 @@
 <!-- ========== FOOTER ========== -->
-<footer class="gradient-x-overlay-sm-primary overflow-hidden">
-  <div class="container content-space-t-2 content-space-b-1">
-    <!-- CTA -->
-    <div class="row justify-content-md-between align-items-md-center text-center text-md-start">
-      <div class="col-md mb-3 mb-md-0">
-        <h2 class="text-indigo">One tool for your entire team. Get started now!</h2>
-      </div>
+<footer class="border-top">
+  <div class="container">
+    <div class="row justify-content-lg-between content-space-t-2 content-space-b-lg-2">
+      <div class="col-lg-3 mb-5">
+        <div class="d-flex align-items-start flex-column h-100">
+          <!-- Logo -->
+          <a class="w-100 mb-2 mb-lg-auto" href="{{ route('welcome') }}" aria-label="Front">
+            <img class="brand" src="{{ Storage::url('public/configuration/' . ($config->logo)) }}" alt="Logo">
+          </a>
+          <!-- End Logo -->
 
-      <div class="col-md-auto">
-        <div class="d-grid d-sm-flex justify-content-sm-center align-items-sm-center gap-3">
-          <a class="btn btn-primary btn-transition" href="#">Contact sales</a>
-          <small>or</small>
-          <a class="btn btn-soft-dark btn-transition" href="#">See pricing <i class="bi-chevron-right small ms-1"></i></a>
+          <p class="text-muted small mb-0 mt-3">{{ $config->deskripsi_footer}}</p>
         </div>
       </div>
-    </div>
-    <!-- End CTA -->
 
-    <hr class="my-9">
-
-    <!-- Content -->
-    <div class="row">
-      <div class="col-6 col-md-3 order-md-2 mb-7 mb-md-0">
-        <h5>Company</h5>
+      <div class="col-6 col-md-4 col-lg-3 ms-lg-auto mb-5 mb-lg-0">
+        <h5>Pages</h5>
 
         <!-- List -->
-        <ul class="list-unstyled list-py-1 mb-0">
-          <li><a class="link link-sm link-secondary" href="#">About</a></li>
-          <li><a class="link link-sm link-secondary" href="#">Services</a></li>
-          <li><a class="link link-sm link-secondary" href="#">Careers</a></li>
-          <li><a class="link link-sm link-secondary" href="#">Blog</a></li>
+        <ul class="list-unstyled list-py-1">
+          <li><a class="link-sm text-secondary" href="#">About Us</a></li>
+          <li><a class="link-sm text-secondary" href="#">Article</a></li>
+          <li><a class="link-sm text-secondary" href="#">Events</a></li>
+          <li><a class="link-sm text-secondary" href="#">Gallery</a></li>
+          <li><a class="link-sm text-secondary" href="#">Contacts</a></li>
         </ul>
         <!-- End List -->
       </div>
+      <!-- End Col -->
 
-      <div class="col-6 col-md-3 order-md-3 mb-7 mb-md-0">
-        <h5>Legal</h5>
+      <div class="col-6 col-md-4 col-lg-3 mb-5 mb-lg-0">
+        <h5>About Us</h5>
 
         <!-- List -->
-        <ul class="list-unstyled list-py-1 mb-0">
-          <li><a class="link link-sm link-secondary" href="#">Help</a></li>
-          <li><a class="link link-sm link-secondary" href="#">Terms & Conditions</a></li>
-          <li><a class="link link-sm link-secondary" href="#">Privacy & Policy</a></li>
+        <ul class="list-unstyled list-py-1">
+          <li><a class="link-sm text-secondary" href="#">Contacts</a></li>
+          <li><a class="link-sm text-secondary" href="#">Gallery</a></li>
+          <li><a class="link-sm text-secondary" href="#">Teams</a></li>
         </ul>
         <!-- End List -->
       </div>
+      <!-- End Col -->
 
-      <div class="col-sm-6 col-md-3 order-md-1 mb-3 mb-md-0">
-        <!-- Logo -->
-        <a class="d-inline-flex align-items-center" href="index.html" aria-label="Front">
-          <img class="brand" src="../assets/svg/logos/logo.svg" alt="Logo">
-        </a>
-        <!-- End Logo -->
+      <div class="col-md-4 col-lg-2 mb-5 mb-lg-0">
+        <h5 class="mb-3">Resources</h5>
+
+        <!-- List -->
+        <ul class="list-unstyled list-py-1">
+          <li><a class="link-sm link-secondary" href="#"><i class="bi-geo-alt-fill me-1"></i>{{
+              $config->alamat_teks}}</a></li>
+          <li><a class="link-sm link-secondary" href="tel:1-062-109-9222"><i
+                class="bi-telephone-inbound-fill me-1"></i>{{ $config->no_hp}}</a></li>
+        </ul>
+        <!-- End List -->
       </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
 
-      <div class="col-sm-6 col-md-3 order-md-4 align-self-center align-self-md-start">
-        <p class="small">© Front. 2021 Htmlstream</p>
+    <hr class="my-0">
+
+    <div class="row align-items-sm-center content-space-1">
+      <div class="col-sm mb-4 mb-sm-0">
+        <p class="small mb-0">{{ $config->footer_name}}</p>
+      </div>
+      <!-- End Col -->
+
+      <div class="col-sm-auto">
+        <!-- Socials -->
+        <ul class="list-inline mb-0">
+          @if($config->show_facebook)
+          <li class="list-inline-item">
+            <a class="btn btn-soft-secondary btn-xs btn-icon" href="{{ $config->link_facebook }}" target="_blank">
+              <i class="bi-facebook"></i>
+            </a>
+          </li>
+          @endif
+
+          @if($config->show_youtube)
+          <li class="list-inline-item">
+            <a class="btn btn-soft-secondary btn-xs btn-icon" href="{{ $config->link_youtube }}" target="_blank">
+              <i class="bi-youtube"></i>
+            </a>
+          </li>
+          @endif
+
+          @if($config->show_instagram)
+          <li class="list-inline-item">
+            <a class="btn btn-soft-secondary btn-xs btn-icon" href="{{ $config->link_instagram }}" target="_blank">
+              <i class="bi-instagram"></i>
+            </a>
+          </li>
+          @endif
+
+          @if($config->show_twitter)
+          <li class="list-inline-item">
+            <a class="btn btn-soft-secondary btn-xs btn-icon" href="{{ $config->link_twitter }}" target="_blank">
+              <i class="bi-twitter"></i>
+            </a>
+          </li>
+          @endif
+
+          @if($config->show_whatsapp)
+          <li class="list-inline-item">
+            <a class="btn btn-soft-secondary btn-xs btn-icon" href="{{ $config->link_whatsapp }}"
+              target="_blank">
+              <i class="bi-whatsapp"></i>
+            </a>
+          </li>
+          @endif
+        </ul>
+
+        <!-- End Socials -->
       </div>
     </div>
-  </div>
-  <!-- End Content -->
-
-  <!-- SVG Background Shape -->
-  <figure class="position-absolute top-0 end-0 zi-n1 mt-n10 me-n10" style="width: 32rem;">
-    <svg viewBox="0 0 451 902" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M451 820C247.2 820 82 654.8 82 451C82 247.2 247.2 82 451 82" stroke="white" stroke-width="164" stroke-miterlimit="10"/>
-    </svg>
-  </figure>
-  <!-- End SVG Background Shape -->
-
-  <!-- SVG Background Shape -->
-  <figure class="position-absolute bottom-0 start-0 zi-n1 mb-n10 me-n10" style="width: 21rem;">
-    <svg viewBox="0 0 451 902" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path opacity="0.125" d="M0 82C203.8 82 369 247.2 369 451C369 654.8 203.8 820 0 820" stroke="url(#paint0_linear)" stroke-width="164" stroke-miterlimit="10"/>
-      <defs>
-        <linearGradient id="paint0_linear" x1="323.205" y1="785.242" x2="-97.6164" y2="56.3589" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="white" stop-opacity="0"/>
-          <stop offset="1" stop-color="#377dff"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  </figure>
-  <!-- End SVG Background Shape -->
 </footer>
 <!-- ========== END FOOTER ========== -->

@@ -14,7 +14,7 @@
         <p>{{ $blog->overview }}</p>
     </div>
 
-    <div class="my-4 my-sm-8 w-75">
+    <div class="my-4 my-sm-8 w-75 ">
         {{-- Image cover --}}
         <img class="img-fluid rounded-lg" src="{{ Storage::url($blog->cover_image) }}" alt="{{ $blog->title }}">
     </div>

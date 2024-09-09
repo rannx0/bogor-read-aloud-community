@@ -6,12 +6,28 @@
 <script src="{{ asset('assets/js/theme.min.js')}}"></script>
 
 <!-- Scroll Gallery -->
- <!-- Include jQuery -->
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <!-- Include Fancybox JS -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
- <script>
-  $(document).ready(function() {
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+document.querySelectorAll('a.nav-link').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    window.scrollTo({
+      top: targetElement.offsetTop - 72, // Sesuaikan offset sesuai dengan tinggi navbar
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+
+
+<!-- Include Fancybox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function() {
       // FANCYBOX
       $(".fancybox").fancybox({
           buttons : [ 
@@ -49,7 +65,7 @@
 {{-- Blog --}}
 <script>
     $(document).ready(function() {
-        var swiper = new Swiper('.js-swiper-card-grid', {
+        var swiper = new Swiper('#blogSection .js-swiper-card-grid', {
             slidesPerView: 3,
             spaceBetween: 30,
             pagination: {
@@ -78,28 +94,30 @@
     });
 </script>
 
-{{-- Events --}}
+<!-- Events Swiper. -->
 <script>
-    // Card Grid
-var swiper = new Swiper('.js-swiper-card-blocks',{
-  slidesPerView: 1,
+// Swiper Card Grid untuk Events
+var swiper = new Swiper('#eventSection .js-swiper-card-grid', {
+  slidesPerView: 3, /* Sesuaikan dengan lebar card */
+  spaceBetween: 30, /* Jarak antar card */
   pagination: {
-    el: '.js-swiper-card-blocks-pagination',
+    el: '#eventSection .js-swiper-card-grid-pagination',
     dynamicBullets: true,
     clickable: true,
   },
   breakpoints: {
     620: {
-      slidesPerView: 2,
-      spaceBetween: 15,
+      slidesPerView: 2, /* Tampilkan 2 card pada layar medium */
+      spaceBetween: 20,
     },
     1024: {
-      slidesPerView: 3,
-      spaceBetween: 15,
+      slidesPerView: 3, /* Tampilkan 3 card pada layar besar */
+      spaceBetween: 10,
     },
   },
 });
 </script>
+
 
 
 <!-- JS Plugins Init. -->
@@ -159,39 +177,32 @@ var swiper = new Swiper('.js-swiper-card-blocks',{
 
     // INITIALIZATION OF SWIPER
     // =======================================================
-    var sliderThumbs = new Swiper('.js-swiper-thumbs', {
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-    history: false,
-    breakpoints: {
-        480: {
-        slidesPerView: 2,
-        spaceBetween: 15,
-        },
-        768: {
-        slidesPerView: 3,
-        spaceBetween: 15,
-        },
-        1024: {
-        slidesPerView: 3,
-        spaceBetween: 15,
-        },
-    },
-    on: {
-        'afterInit': function (swiper) {
-        swiper.el.querySelectorAll('.js-swiper-pagination-progress-body-helper')
-        .forEach($progress => $progress.style.transitionDuration = `${swiper.params.autoplay.delay}ms`)
-        }
-    }
-    });
-
-    var sliderMain = new Swiper('.js-swiper-main', {
-    effect: 'fade',
-    autoplay: true,
-    loop: true,
-    thumbs: {
-        swiper: sliderThumbs
-    }
-    })
+    
 })()
 </script>
+
+<script>
+    (function() {
+      // INITIALIZATION OF SWIPER
+      // =======================================================
+      var navigation = new Swiper('.js-swiper-navigation', {
+        navigation: {
+          nextEl: '.js-swiper-navigation-button-next',
+          prevEl: '.js-swiper-navigation-button-prev',
+        },
+        pagination: {
+          el: '.js-swiper-pagination',
+          clickable: true, // Menambahkan clickable pagination
+        },
+        autoplay: {
+          delay: 3000, // Set delay to 3 seconds
+          disableOnInteraction: false, // Autoplay tetap jalan meskipun ada interaksi
+        },
+        effect: 'fade', // Menambahkan efek fade untuk transisi yang halus
+        fadeEffect: {
+          crossFade: true, // Mengaktifkan crossfade agar lebih smooth
+        },
+        loop: true // Mengaktifkan looping agar slider terus berjalan
+      });
+    })();
+  </script>

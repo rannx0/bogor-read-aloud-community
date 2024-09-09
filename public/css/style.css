@@ -1,6 +1,6 @@
 /* Ensure the carousel takes up the full height */
 .carousel-wrapper {
-  position: absolute; /* Position absolute to allow stacking */
+  position: relative; /* Position absolute to allow stacking */
   top: 0;
   left: 0;
   width: 100%;
@@ -147,3 +147,20 @@
   border-color: #fff;
 }
 
+.wp-button{
+	margin-top:14px;
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:35px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}

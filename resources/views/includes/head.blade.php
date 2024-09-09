@@ -3,10 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Title -->
-<title>Bogor Read Aloud Community</title>
+<title>{{ $config->name_instansi ?? 'BoRA' }}</title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="{{ Storage::url('public/configuration/' . ($config->favicon ?? 'default.ico')) }}">
 
 <!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
@@ -22,16 +22,11 @@
 {{-- CSS Style --}}
 <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
-
 {{-- Gallery --}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Include Fancybox CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <!------ Include the above in your HEAD tag ---------->
-
-{{-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen"> --}}
-{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> --}}
-
 {{-- Event --}}
 <link rel="stylesheet" type="text/css"
 href=

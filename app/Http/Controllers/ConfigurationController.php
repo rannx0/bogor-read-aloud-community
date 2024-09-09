@@ -17,12 +17,13 @@ class ConfigurationController extends Controller
 
     public function store(Request $request)
     {
+
         // Validasi data input
         $request->validate([
             'name_instansi' => 'nullable|string',
             'footer_name' => 'nullable|string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'favicon' => 'nullable|image|mimes:ico,jpeg,png,jpg,gif|max:2048',
+            'favicon' => 'nullable|mimes:ico,jpeg,png,jpg,gif|max:2048',
             'no_hp' => 'nullable|string',
             'email' => 'nullable|email',
             'alamat_teks' => 'nullable|string',
@@ -47,6 +48,13 @@ class ConfigurationController extends Controller
         $configuration->logo = $this->uploadFile($request, 'logo', $configuration->logo, 'public/configuration');
         $configuration->favicon = $this->uploadFile($request, 'favicon', $configuration->favicon, 'public/configuration');
 
+        // Convert boolean values
+        $data['show_instagram'] = $request->has('show_instagram');
+        $data['show_youtube'] = $request->has('show_youtube');
+        $data['show_twitter'] = $request->has('show_twitter');
+        $data['show_facebook'] = $request->has('show_facebook');
+        $data['show_whatsapp'] = $request->has('show_whatsapp');
+        
         // Update semua data kecuali logo, favicon, dan _token
         $configuration->fill($request->except(['logo', 'favicon', '_token']));
 

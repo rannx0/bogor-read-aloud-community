@@ -37,10 +37,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/backend', function () {
         return view('backend.home');
-    })->name('backend.home');
-
-    // Home
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    })->name('backend');
 
     // Slider
     Route::get('/sliders', [SliderController::class, 'index'])->name('sliders.index');
@@ -70,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Events
     Route::get('/events', [EventController::class, 'index'])->name('events.index'); // View event list
-    Route::get('/events/create', [EventController::class, 'create'])->name('events.create'); // Display event creation form
+    Route::get('/events/create/create', [EventController::class, 'create'])->name('events.create'); // Display event creation form
     Route::post('/events', [EventController::class, 'store'])->name('events.store'); // Store new event data
     Route::get('/events/show/{event}', [EventController::class, 'show'])->name('events.show'); // View event details
     Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit'); // Display event edit form
