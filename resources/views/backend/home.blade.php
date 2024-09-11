@@ -1,49 +1,69 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-        <label for="floatingInput">Email address</label>
-    </div>
+<!-- Start Content-->
+<div class="container-fluid">
 
-    <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-    <label for="floatingPassword">Password</label>
-    </div>
-
-    <div class="form-floating">
-    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px;"></textarea>
-    <label for="floatingTextarea">Comments</label>
-    </div>
-
-    <div class="form-floating">
-    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <label for="floatingSelect">Works with selects</label>
-    </div>
-
-    <div class="row g-2">
-    <div class="col-md">
-        <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com" />
-            <label for="floatingInputGrid">Email address</label>
+    <!-- start page title -->
+    <div class="row mb-3">
+        <div class="col-12 mt-3">
+            <div class="page-title-box">
+                <h1 class="h1">Dashboard</h1>
+            </div>
         </div>
     </div>
-    <div class="col-md">
-        <div class="form-floating">
-            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <label for="floatingSelectGrid">Works with selects</label>
-        </div>
+    <!-- end page title --> 
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card widget-inline">
+                <div class="card-body p-0">
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <div class="card shadow-none m-2 flex-fill " style="max-width: 18rem;">
+                            <div class="card-body text-center">
+                                <i class="dripicons-photo text-muted" style="font-size: 24px;"></i>
+                                <h3><span>{{ $galleries }}</span></h3>
+                                <p class="text-muted font-15 mb-0">Total Image Galleries</p>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-none m-2 flex-fill border-start" style="max-width: 18rem;">
+                            <div class="card-body text-center">
+                                <i class="dripicons-photo-group text-muted" style="font-size: 24px;"></i>
+                                <h3><span>{{ $sliders }}</span></h3>
+                                <p class="text-muted font-15 mb-0">Total Sliders</p>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-none m-2 flex-fill border-start" style="max-width: 18rem;">
+                            <div class="card-body text-center">
+                                <i class="dripicons-calendar text-muted" style="font-size: 24px;"></i>
+                                <h3><span>{{ $events }}</span></h3>
+                                <p class="text-muted font-15 mb-0">Total Events</p>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-none m-2 flex-fill border-start" style="max-width: 18rem;">
+                            <div class="card-body text-center">
+                                <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
+                                <h3><span>{{ $teams }}</span></h3>
+                                <p class="text-muted font-15 mb-0">Total Teams</p>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-none m-2 flex-fill border-start" style="max-width: 18rem;">
+                            <div class="card-body text-center">
+                                <i class="dripicons-document text-muted" style="font-size: 24px;"></i>
+                                <h3><span>{{ $blogs }}</span></h3>
+                                <p class="text-muted font-15 mb-0">Total Articles</p>
+                            </div>
+                        </div>
+
+                    </div> <!-- end flex container -->
+                </div>
+            </div> <!-- end card-box-->
+        </div> <!-- end col-->
     </div>
-    </div>
+    <!-- end row-->
+</div>
 @endsection
-

@@ -6,35 +6,37 @@
 <div class="container">
     <h1>Blog List</h1>
     <a href="{{ route('blogs.create') }}" class="btn btn-primary">Create New Blog</a>
-    <table class="table mt-4">
-        <thead>
+    <table class="table mt-4 table-primary table-bordered">
+        <thead class="table-dark">
             <tr>
+                <th>No</th>
+                <th>Cover</th>
                 <th>Title</th>
-                <th>Overview</th>
                 <th>Category</th>
-                <th>Tags</th>
+                <th>Created At</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($blogs as $blog)
+            @foreach($blogs as $i => $blog)
                 <tr>
-                    <td>{{ $blog->title }}</td>
-                    <td>{{ $blog->overview }}</td>
-                    <td>{{ $blog->category->name }}</td>
+                    <td>{{ $i + 1 }}</td>
                     <td>
-                        @foreach($blog->tags as $tag)
-                            <span class="badge bg-info">{{ $tag->name }}</span>
-                        @endforeach
+                        <img src="{{ Storage::url($blog->cover_image)}}" alt="" class="img-fluid" style="width: 75px">
                     </td>
+                    <td>{{ $blog->title }}</td>
+                    <td>{{ $blog->category->name }}</td>
+                    <td>{{ $blog->created_at->format('d M Y') }}</td>
                     <td>
-                        <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-info btn-sm">View</a>
-                        <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
+                        <div class="d-flex gap-1">
+                            <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-info btn-sm">View</a>
+                            <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

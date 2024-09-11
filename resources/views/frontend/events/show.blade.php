@@ -28,17 +28,29 @@
                     <span class="text-cap mb-0 me-2">Share:</span>
 
                     <div class="d-flex gap-2">
-                        <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="#">
-                            <i class="bi-facebook"></i>
+                        <a class="btn btn-outline-secondary btn-sm btn-icon rounded-circle mx-1" 
+                        href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" 
+                        target="_blank">
+                        <i class="bi-facebook"></i>
                         </a>
-                        <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="#">
-                            <i class="bi-twitter"></i>
+
+                        <a class="btn btn-outline-secondary btn-sm btn-icon rounded-circle mx-1" 
+                        href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($event->judul) }}" 
+                        target="_blank">
+                         <i class="bi-twitter"></i>
                         </a>
-                        <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="#">
-                            <i class="bi-instagram"></i>
+ 
+
+                        <a class="btn btn-outline-secondary btn-sm btn-icon rounded-circle mx-1" 
+                        href="https://www.instagram.com/" 
+                        target="_blank">
+                         <i class="bi-instagram"></i>
                         </a>
-                        <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="#">
-                            <i class="bi-telegram"></i>
+
+                        <a class="btn btn-outline-secondary btn-sm btn-icon rounded-circle mx-1" 
+                        href="https://t.me/share/url?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($event->judul) }}" 
+                        target="_blank">
+                         <i class="bi-telegram"></i>
                         </a>
                     </div>
                 </div>
@@ -102,15 +114,31 @@
 
                 <div class="w-lg-75 mx-lg-auto">
                         <!-- Input Card -->
-                    <a href="{{ $event->link_pendaftaran }}" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp me-1"></i>Daftar Sekarang</a>
+                    <a href="{{ $event->link_pendaftaran }}" target="_blank" class="btn btn-outline-success">Daftar Sekarang</a>
                         <!-- End Input Card --> 
                 </div>
             </div>
         </div>
         <!-- End Card -->
 
-        <p>Follow us on <a class="link" href="#">Instagram</a>
+        <p>Follow us on 
+            @if($config->show_facebook)
+                <a class="link" href="{{ $config->link_facebook }}" target="_blank">Facebook</a>
+            @endif
+        
+            @if($config->show_youtube)
+                <a class="link" href="{{ $config->link_youtube }}" target="_blank">YouTube</a>
+            @endif
+        
+            @if($config->show_instagram)
+                <a class="link" href="{{ $config->link_instagram }}" target="_blank">Instagram</a>
+            @endif
+        
+            @if($config->show_twitter)
+                <a class="link" href="{{ $config->link_twitter }}" target="_blank">Twitter</a>
+            @endif
         </p>
+        
 
         <div class="row justify-content-sm-between align-items-sm-center mt-5">
             <div class="col-sm mb-2 mb-sm-0">

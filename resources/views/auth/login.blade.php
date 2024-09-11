@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Log In | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+    <title>Login </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ Storage::url('public/configuration/' . ($config->favicon ?? 'default.ico')) }}">
     
     <!-- App css -->
     <link href="{{ asset('back-style/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <a href="{{ route('password.request') }}" class="text-muted float-end"><small>Forgot your password?</small></a>
+                                    {{-- <a href="{{ route('password.request') }}" class="text-muted float-end"><small>Forgot your password?</small></a> --}}
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter your password">
@@ -88,7 +88,7 @@
     <!-- end page -->
 
     <footer class="footer footer-alt">
-        <script>document.write(new Date().getFullYear())</script> © BogorReadAloud -
+        {{ $config->footer_name}}
     </footer>
 
     <!-- bundle -->

@@ -1,7 +1,7 @@
 <!-- ========== FOOTER ========== -->
 <footer class="border-top">
   <div class="container">
-    <div class="row justify-content-lg-between content-space-t-2 content-space-b-lg-2">
+    <div class="row justify-content-lg-between content-space-t-2">
       <div class="col-lg-3 mb-5">
         <div class="d-flex align-items-start flex-column h-100">
           <!-- Logo -->
@@ -19,11 +19,11 @@
 
         <!-- List -->
         <ul class="list-unstyled list-py-1">
-          <li><a class="link-sm text-secondary" href="#">About Us</a></li>
-          <li><a class="link-sm text-secondary" href="#">Article</a></li>
-          <li><a class="link-sm text-secondary" href="#">Events</a></li>
-          <li><a class="link-sm text-secondary" href="#">Gallery</a></li>
-          <li><a class="link-sm text-secondary" href="#">Contacts</a></li>
+          <li><a class="link-sm text-secondary" href="#aboutSection">About Us</a></li>
+          <li><a class="link-sm text-secondary" href="#blogSection">Article</a></li>
+          <li><a class="link-sm text-secondary" href="#eventSection">Events</a></li>
+          <li><a class="link-sm text-secondary" href="#gallerySection">Gallery</a></li>
+          <li><a class="link-sm text-secondary" href="#contactSection">Contacts</a></li>
         </ul>
         <!-- End List -->
       </div>
@@ -34,9 +34,9 @@
 
         <!-- List -->
         <ul class="list-unstyled list-py-1">
-          <li><a class="link-sm text-secondary" href="#">Contacts</a></li>
-          <li><a class="link-sm text-secondary" href="#">Gallery</a></li>
-          <li><a class="link-sm text-secondary" href="#">Teams</a></li>
+          <li><a class="link-sm text-secondary" href="#contactSection">Contacts</a></li>
+          <li><a class="link-sm text-secondary" href="#gallerySection">Gallery</a></li>
+          <li><a class="link-sm text-secondary" href="#teamSection">Teams</a></li>
         </ul>
         <!-- End List -->
       </div>

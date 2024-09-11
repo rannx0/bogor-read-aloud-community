@@ -4,7 +4,7 @@
 <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
 <meta content="Coderthemes" name="author" />
 <!-- App favicon -->
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="{{ Storage::url('public/configuration/' . ($config->favicon ?? 'default.ico')) }}">
 
 <!-- third party css -->
 <link href="{{ asset('back-style/css/vendor/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />
@@ -18,3 +18,5 @@
 
 <!-- Quill css -->
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ asset('back-style/css/style.css')}}">

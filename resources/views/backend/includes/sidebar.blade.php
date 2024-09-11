@@ -1,9 +1,6 @@
 <div class="leftside-menu">
 
-<!-- LOGO -->
-
     <div class="h-100" id="leftside-menu-container" data-simplebar>
-
         <!--- Sidemenu -->
         <ul class="side-nav">
 
@@ -15,7 +12,7 @@
                     <span> Home </span>
                 </a>
             </li>
-            
+
             <li class="side-nav-item">
                 <a href="{{ route('configuration.index') }}" class="side-nav-link">
                     <i class="dripicons-gear"></i>

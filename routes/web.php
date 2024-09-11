@@ -35,77 +35,90 @@ Auth::routes();
 
 // Routes requiring authentication (Backend)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/backend', function () {
+    Route::get('/admin', function () {
         return view('backend.home');
     })->name('backend');
 
-    // Slider
-    Route::get('/sliders', [SliderController::class, 'index'])->name('sliders.index');
-    Route::get('/sliders/create', [SliderController::class, 'create'])->name('sliders.create');
-    Route::post('/sliders', [SliderController::class, 'store'])->name('sliders.store');
-    Route::get('/sliders/{slider}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
-    Route::put('/sliders/{slider}', [SliderController::class, 'update'])->name('sliders.update');
-    Route::delete('/sliders/{slider}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+    // Slider Routes
+    Route::prefix('/admin/sliders')->group(function () {
+        Route::get('/', [SliderController::class, 'index'])->name('sliders.index');
+        Route::get('/create', [SliderController::class, 'create'])->name('sliders.create');
+        Route::post('/', [SliderController::class, 'store'])->name('sliders.store');
+        Route::get('/{slider}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+        Route::put('/{slider}', [SliderController::class, 'update'])->name('sliders.update');
+        Route::delete('/{slider}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+    });
 
-    // Gallery
-    Route::get('/gallery', [GalleryController::class, 'index'])->name('galleries.index');
-    Route::get('/gallery/create', [GalleryController::class, 'create'])->name('galleries.create');
-    Route::post('/gallery', [GalleryController::class, 'store'])->name('galleries.store');
-    Route::get('/gallery/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
-    Route::get('/gallery/{id}/show', [GalleryController::class, 'index'])->name('galleries.show');
-    Route::put('/gallery/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
-    Route::delete('/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
+    // Gallery Routes
+    Route::prefix('/admin/gallery')->group(function () {
+        Route::get('/', [GalleryController::class, 'index'])->name('galleries.index');
+        Route::get('/create', [GalleryController::class, 'create'])->name('galleries.create');
+        Route::post('/', [GalleryController::class, 'store'])->name('galleries.store');
+        Route::get('/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
+        Route::get('/{id}/show', [GalleryController::class, 'index'])->name('galleries.show');
+        Route::put('/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
+        Route::delete('/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
+    });
 
-    // Team 
-    Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
-    Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
-    Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
-    Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
-    Route::get('/teams/{team}/edit', [TeamController::class, 'edit'])->name('teams.edit');
-    Route::put('/teams/{team}', [TeamController::class, 'update'])->name('teams.update');
-    Route::delete('/teams/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
+    // Team Routes
+    Route::prefix('/admin/teams')->group(function () {
+        Route::get('/', [TeamController::class, 'index'])->name('teams.index');
+        Route::get('/create', [TeamController::class, 'create'])->name('teams.create');
+        Route::post('/', [TeamController::class, 'store'])->name('teams.store');
+        Route::get('/{team}', [TeamController::class, 'show'])->name('teams.show');
+        Route::get('/{team}/edit', [TeamController::class, 'edit'])->name('teams.edit');
+        Route::put('/{team}', [TeamController::class, 'update'])->name('teams.update');
+        Route::delete('/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
+    });
 
-    // Events
-    Route::get('/events', [EventController::class, 'index'])->name('events.index'); // View event list
-    Route::get('/events/create/create', [EventController::class, 'create'])->name('events.create'); // Display event creation form
-    Route::post('/events', [EventController::class, 'store'])->name('events.store'); // Store new event data
-    Route::get('/events/show/{event}', [EventController::class, 'show'])->name('events.show'); // View event details
-    Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit'); // Display event edit form
-    Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update'); // Save event data changes
-    Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy'); // Delete event
+    // Event Routes
+    Route::prefix('/admin/events')->group(function () {
+        Route::get('/', [EventController::class, 'index'])->name('events.index');
+        Route::get('/create', [EventController::class, 'create'])->name('events.create');
+        Route::post('/', [EventController::class, 'store'])->name('events.store');
+        Route::get('/show/{event}', [EventController::class, 'show'])->name('events.show');
+        Route::get('/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
+        Route::put('/{event}', [EventController::class, 'update'])->name('events.update');
+        Route::delete('/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+    });
 
-    // Media Partners
-    Route::post('/media-partners', [MediaPartnerController::class, 'store'])->name('mediaPartners.store'); // Store a media partner
-    Route::delete('/media-partners/{mediaPartner}', [MediaPartnerController::class, 'destroy'])->name('mediaPartners.destroy'); // Delete a media partner
+    // Media Partners Routes
+    Route::prefix('/admin/media-partners')->group(function () {
+        Route::post('/', [MediaPartnerController::class, 'store'])->name('mediaPartners.store');
+        Route::delete('/{mediaPartner}', [MediaPartnerController::class, 'destroy'])->name('mediaPartners.destroy');
+    });
 
-    // Sponsors
-    Route::post('/sponsors', [SponsorController::class, 'store'])->name('sponsors.store'); // Store a sponsor
-    Route::delete('/sponsors/{sponsor}', [SponsorController::class, 'destroy'])->name('sponsors.destroy'); // Delete a sponsor
-    
-    // Routes untuk Blog Posts
-    Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index'); // Melihat daftar blog posts
-    Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create'); // Menampilkan form pembuatan blog post
-    Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store'); // Menyimpan blog post baru
-    Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show'); // Melihat detail blog post
-    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit'); // Menampilkan form edit blog post
-    Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update'); // Menyimpan perubahan data blog post
-    Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy'); // Menghapus blog post
+    // Sponsors Routes
+    Route::prefix('/admin/sponsors')->group(function () {
+        Route::post('/', [SponsorController::class, 'store'])->name('sponsors.store');
+        Route::delete('/{sponsor}', [SponsorController::class, 'destroy'])->name('sponsors.destroy');
+    });
 
-    // Route untuk mencari blog berdasarkan kategori atau tag
-    Route::get('/blogs/category/{category}', [BlogController::class, 'category'])->name('blogs.category'); // Melihat daftar blog berdasarkan kategori
-    Route::get('/blogs/tag/{tag}', [BlogController::class, 'tag'])->name('blogs.tag'); // Melihat daftar blog berdasarkan tag
+    // Blog Routes
+    Route::prefix('/admin/blogs')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
+        Route::get('/create', [BlogController::class, 'create'])->name('blogs.create');
+        Route::post('/', [BlogController::class, 'store'])->name('blogs.store');
+        Route::get('/{blog}', [BlogController::class, 'show'])->name('blogs.show');
+        Route::get('/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+        Route::put('/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+        Route::delete('/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+        Route::get('/category/{category}', [BlogController::class, 'category'])->name('blogs.category');
+        Route::get('/tag/{tag}', [BlogController::class, 'tag'])->name('blogs.tag');
+    });
 
-    // Routes untuk Categories
-    Route::get('/categories', [BlogCategoryController::class, 'index'])->name('categories.index'); // Menampilkan daftar kategori
-    Route::get('/categories/create', [BlogCategoryController::class, 'create'])->name('categories.create'); // Menampilkan form pembuatan kategori
-    Route::post('/categories', [BlogCategoryController::class, 'store'])->name('categories.store'); // Menyimpan kategori baru
-    Route::get('/categories/{category}', [BlogCategoryController::class, 'show'])->name('categories.show'); // Menampilkan detail kategori
-    Route::get('/categories/{category}/edit', [BlogCategoryController::class, 'edit'])->name('categories.edit'); // Menampilkan form edit kategori
-    Route::put('/categories/{category}', [BlogCategoryController::class, 'update'])->name('categories.update'); // Menyimpan perubahan kategori
-    Route::delete('/blog-categories/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('categories.destroy');    // Menghapus kategori
-    
-    // Routes untuk Configurations
-    Route::get('/configuration/{id?}', [ConfigurationController::class, 'index'])->name('configuration.index');
-    Route::post('/configuration', [ConfigurationController::class, 'store'])->name('configuration.store');
-    
+    // Category Routes
+    Route::prefix('/admin/categories')->group(function () {
+        Route::get('/', [BlogCategoryController::class, 'index'])->name('categories.index');
+        Route::get('/create', [BlogCategoryController::class, 'create'])->name('categories.create');
+        Route::post('/', [BlogCategoryController::class, 'store'])->name('categories.store');
+        Route::get('/{category}', [BlogCategoryController::class, 'show'])->name('categories.show');
+        Route::get('/{category}/edit', [BlogCategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('/{category}', [BlogCategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/{category}', [BlogCategoryController::class, 'destroy'])->name('categories.destroy');
+    });
+
+    // Configuration Routes
+    Route::get('/admin/configuration/{id?}', [ConfigurationController::class, 'index'])->name('configuration.index');
+    Route::post('/admin/configuration', [ConfigurationController::class, 'store'])->name('configuration.store');
 });

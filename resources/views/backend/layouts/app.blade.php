@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('backend.includes.head')
+    @yield('styles')
 </head>
 
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"

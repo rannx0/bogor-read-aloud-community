@@ -70,15 +70,18 @@
             <div id="editor" style="height: 300px;">{!! $blog->description !!}</div>
 
             <!-- Hidden textarea for form submission -->
-            <textarea name="description" id="description" style="display:none;">{!! $blog->description !!}</textarea>
+            <textarea name="description" id="description" style="display:none;" required>{!! $blog->description !!}</textarea>
         </div>
 
         <div class="mb-3">
             <label for="tags" class="form-label">Tags (Comma-separated)</label>
-            <input type="text" name="tags" class="form-control" id="tags" value="{{ $blog->tags }}">
-        </div>
+            <textarea name="tags" class="form-control" id="tags" rows="4" required>{{ old('tags', $selectedTags) }}</textarea>
+        </div>        
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <div>
+            <a href="{{ route('blogs.index')}}" class="btn btn-danger">Back</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
     </form>
 </div>
 @endsection

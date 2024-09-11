@@ -42,6 +42,17 @@ class FrontendServiceProvider extends ServiceProvider
             $view->with(compact('sliders', 'galleries', 'teams', 'events', 'blogs', 'event', 'configurations'));
         });
 
+        // View Composer untuk view 'home'
+        View::composer('backend.home', function ($view) {
+            $view->with([
+                'galleries' => gallery::count(),
+                'sliders' => Slider::count(),
+                'events' => Event::count(),
+                'teams' => Team::count(),
+                'blogs' => BlogPost::count(),
+            ]);
+        });
+
         // View Composer untuk semua view
         View::composer('*', function ($view) {
             $configurations = Configuration::first();

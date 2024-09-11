@@ -75,7 +75,10 @@
             <input type="text" name="tags" class="form-control" id="tags">
         </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <div>
+            <a href="{{ route('blogs.index')}}" class="btn btn-danger me-2">Back</a>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
     </form>
 </div>
 @endsection
